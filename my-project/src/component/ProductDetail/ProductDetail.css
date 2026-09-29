@@ -1,0 +1,515 @@
+/* ================= PRODUCT DETAIL PAGE (FINAL) ================= */
+
+.pd-page {
+  min-height: 100vh;
+  background: #fff;
+  padding-top: 0;
+  overflow-x: hidden;           /* full-width gallery (100vw) ke liye zaroori */
+}
+
+.pd-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* ================= BREADCRUMB ================= */
+
+.pd-breadcrumb-section { padding: 20px 0; border-bottom: 1px solid #eee; }
+.pd-breadcrumb { font-size: 12px; color: #666; }
+.pd-breadcrumb a { color: #5a9fd4; text-decoration: none; }
+.pd-breadcrumb a:hover { text-decoration: underline; }
+.pd-breadcrumb-sep { margin: 0 8px; color: #999; }
+
+/* ================= NOT FOUND ================= */
+
+.pd-not-found { text-align: center; padding: 80px 20px; }
+.pd-not-found h1 { font-size: 32px; font-weight: 300; margin-bottom: 30px; color: #333; }
+
+.pd-back-link {
+  display: inline-block;
+  background: #333;
+  color: #fff;
+  padding: 12px 32px;
+  text-decoration: none;
+  font-size: 12px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  transition: background 0.3s ease;
+}
+.pd-back-link:hover { background: #555; }
+
+/* ================= MAIN LAYOUT ================= */
+/*
+  .pd-details ko display: contents kiya hai, is se uske children seedha
+  .pd-main grid mein aa jate hain. Left image column 1 mein, details column 2 mein,
+  aur detail gallery neeche apni alag full-width row mein (overlap nahi hota).
+*/
+
+.pd-main {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: repeat(19, auto) 1fr;
+  column-gap: 60px;
+  row-gap: 0;
+  padding: 60px 0;
+  align-items: flex-start;
+  width: 100%;
+}
+
+/* ================= GALLERY (LEFT) ================= */
+
+.pd-gallery {
+  grid-column: 1;
+  grid-row: 1 / span 20;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.pd-main-image-wrapper {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 2/3;
+  overflow: hidden;
+  background: #f5f5f5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.pd-main-image {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: center;
+}
+
+/* ================= DETAILS (RIGHT) ================= */
+
+.pd-details { display: contents; }
+
+.pd-details > * {
+  grid-column: 2;
+  min-width: 0;
+  margin-bottom: 18px;
+}
+
+.pd-title {
+  font-size: 28px;
+  font-weight: 300;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin: 0 0 18px;
+  color: #333;
+  line-height: 1.4;
+}
+
+.pd-price {
+  font-size: 18px;
+  font-weight: 400;
+  color: #333;
+  letter-spacing: 0.5px;
+}
+
+/* Info Grid */
+.pd-info-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 15px 20px;
+  padding: 20px 0;
+  border-top: 1px solid #eee;
+  border-bottom: 1px solid #eee;
+}
+
+.pd-info-item { display: flex; flex-direction: column; gap: 5px; }
+.pd-info-label { font-size: 10px; text-transform: uppercase; letter-spacing: 1px; color: #999; font-weight: 500; }
+.pd-info-value { font-size: 12px; color: #333; letter-spacing: 0.5px; }
+
+/* Size Selector */
+.pd-size-selector { display: flex; flex-direction: column; gap: 10px; }
+.pd-size-label { font-size: 11px; text-transform: uppercase; letter-spacing: 1px; color: #999; font-weight: 500; }
+.pd-size-buttons { display: flex; gap: 8px; flex-wrap: wrap; }
+
+.pd-size-btn {
+  flex: 1;
+  min-width: 50px;
+  padding: 10px 0;
+  border: 1px solid #ddd;
+  background: #fff;
+  color: #333;
+  font-size: 11px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+.pd-size-btn:hover { border-color: #333; }
+.pd-size-btn.active { background: #333; color: #fff; border-color: #333; }
+
+/* Quantity Selector */
+.pd-quantity-selector { display: flex; flex-direction: column; gap: 10px; }
+.pd-qty-label { font-size: 11px; text-transform: uppercase; letter-spacing: 1px; color: #999; font-weight: 500; }
+.pd-qty-controls { display: flex; align-items: center; gap: 0; width: fit-content; border: 1px solid #ddd; }
+
+.pd-qty-btn {
+  width: 40px;
+  height: 40px;
+  border: none;
+  background: #fff;
+  color: #333;
+  font-size: 18px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 300;
+}
+.pd-qty-btn:hover { background: #f5f5f5; }
+.pd-qty-display { width: 50px; text-align: center; font-size: 14px; font-weight: 400; color: #333; }
+
+/* Add to Cart + Try It On (main buttons) */
+.pd-add-to-cart-btn,
+.pd-try-it-on-btn {
+  width: 100%;
+  padding: 16px;
+  background: #333;
+  color: #fff;
+  border: none;
+  font-size: 12px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+  border-radius: 4px;
+}
+
+.pd-try-it-on-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.pd-add-to-cart-btn:hover,
+.pd-try-it-on-btn:hover { background: #555; }
+.pd-try-icon { display: inline-block; }
+
+/* Installments Box */
+.pd-installments { border: 1px solid #ddd; padding: 16px; border-radius: 4px; }
+.pd-installments-header { display: flex; align-items: center; gap: 8px; margin-bottom: 12px; }
+.pd-installments-icon { width: 20px; height: 20px; color: #333; }
+.pd-installments-text { font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; color: #333; }
+.pd-installments-offer { font-size: 12px; color: #666; margin: 0; line-height: 1.6; }
+
+/* ================= TABS ================= */
+
+.pd-tabs-section { margin-top: 40px; padding-top: 40px; border-top: 1px solid #eee; }
+.pd-tabs-header { display: flex; gap: 40px; border-bottom: 1px solid #eee; padding-bottom: 0; }
+
+.pd-tab-btn {
+  background: none;
+  border: none;
+  padding: 20px 0;
+  font-size: 12px;
+  font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: #999;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+}
+.pd-tab-btn:hover { color: #333; }
+.pd-tab-btn.active { color: #333; font-weight: 600; }
+
+.pd-tab-btn.active::after {
+  content: '';
+  position: absolute;
+  bottom: -1px;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: #333;
+}
+
+.pd-tab-content { padding: 40px 0; }
+.pd-tab-panel { display: none; }
+.pd-tab-panel.active { display: block; }
+
+.pd-tab-panel h3 {
+  font-size: 13px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: #333;
+  margin: 0 0 15px 0;
+  padding-top: 20px;
+}
+.pd-tab-panel h3:first-child { padding-top: 0; }
+.pd-tab-panel p { font-size: 13px; line-height: 1.8; color: #666; margin: 0 0 20px 0; }
+
+.pd-features-list,
+.pd-care-list { list-style: none; padding: 0; margin: 0; }
+
+.pd-features-list li,
+.pd-care-list li {
+  font-size: 13px;
+  line-height: 1.8;
+  color: #666;
+  margin-bottom: 8px;
+  padding-left: 20px;
+  position: relative;
+}
+
+.pd-features-list li::before,
+.pd-care-list li::before {
+  content: '•';
+  position: absolute;
+  left: 0;
+  color: #333;
+}
+
+/* ================= DETAIL PICTURES GALLERY (FULL WIDTH) ================= */
+
+.pd-details > .pd-detail-pics-gallery,
+.pd-main > .pd-detail-pics-gallery,
+.pd-detail-pics-gallery {
+  grid-column: 1 / -1;                  
+  width: 100vw;
+  max-width: 100vw;
+  margin: 0 0 0 calc(50% - 50vw);    
+  padding: 30px 80px 0;                 
+  box-sizing: border-box;
+  border-top: 2px solid #eee;
+}
+
+.pd-detail-pics-header { text-align: center; margin-bottom: 30px; padding: 0; }
+
+.pd-detail-pics-header h2 {
+  font-size: 28px;
+  font-weight: 300;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin: 0;
+  color: #333;
+}
+
+.pd-detail-pics-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+  margin-bottom: 80px;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.pd-detail-pic-item,
+.pd-detail-pic-card {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  min-width: 0;
+}
+
+/* Pic card */
+.pd-detail-pic-image-wrapper,
+.pd-detail-pic-wrapper {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 3 / 4;
+  overflow: hidden;
+  background: #f5f5f5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.pd-detail-pic-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top center;
+  transition: transform 0.3s ease;
+}
+
+.pd-detail-pic-image-wrapper:hover .pd-detail-pic-img { transform: scale(1.05); }
+
+/* overlay: hover par pic black nahi hoti */
+.pd-detail-pic-overlay {
+  position: absolute;
+  inset: 0;
+  background: transparent;
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Add to Cart: pic ke bottom edge par, hover par neeche se slide-up */
+.pd-detail-add-to-cart-btn {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  padding: 12px 0;
+  background: #333;
+  color: #fff;
+  border: none;
+  border-radius: 0;
+  font-size: 11px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  text-align: center;
+  white-space: nowrap;
+  cursor: pointer;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(100%);
+  transition: opacity 0.3s ease, transform 0.3s ease, background 0.3s ease;
+  z-index: 3;
+}
+
+.pd-detail-pic-image-wrapper:hover .pd-detail-add-to-cart-btn {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.pd-detail-add-to-cart-btn:hover { background: #000; }
+.pd-detail-add-to-cart-btn:active { background: #555; }
+
+/* mobile/touch: hover nahi hota, button hamesha show */
+@media (hover: none) {
+  .pd-detail-add-to-cart-btn { opacity: 1; visibility: visible; transform: none; }
+}
+
+/* Pic info */
+.pd-detail-pic-info { padding: 0 8px; }
+
+.pd-detail-pic-info h3 {
+  font-size: 12px;
+  font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: #333;
+  margin: 0 0 4px 0;
+  line-height: 1.3;
+}
+
+.pd-detail-pic-fabric {
+  font-size: 10px;
+  color: #999;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin: 0 0 4px 0;
+}
+
+.pd-detail-pic-price { font-size: 12px; font-weight: 600; color: #333; margin: 0; }
+
+/* ================= RESPONSIVE ================= */
+
+@media (max-width: 1200px) {
+  .pd-detail-pics-grid { grid-template-columns: repeat(3, 1fr); gap: 18px; }
+  .pd-detail-pics-header h2 { font-size: 24px; }
+}
+
+/* Single column: left image upar, details neeche, gallery sab se neeche */
+@media (max-width: 1024px) {
+  .pd-main {
+    grid-template-columns: 1fr;
+    grid-template-rows: none;
+    padding: 40px 0;
+  }
+
+  .pd-gallery { grid-column: 1; grid-row: auto; margin-bottom: 30px; }
+  .pd-details > * { grid-column: 1; }
+
+  .pd-title { font-size: 24px; }
+  .pd-info-grid { grid-template-columns: 1fr; }
+
+  .pd-details > .pd-detail-pics-gallery,
+  .pd-main > .pd-detail-pics-gallery,
+  .pd-detail-pics-gallery {
+    grid-column: 1;
+    padding: 40px 20px 0;
+  }
+}
+
+@media (max-width: 768px) {
+  .pd-container { padding: 0 15px; }
+  .pd-main { padding: 30px 0; }
+
+  .pd-title { font-size: 20px; }
+  .pd-price { font-size: 16px; }
+  .pd-main-image-wrapper { aspect-ratio: 3/4; }
+
+  .pd-size-buttons { gap: 6px; }
+  .pd-size-btn { min-width: 45px; padding: 8px 0; font-size: 10px; }
+
+  .pd-qty-btn { width: 36px; height: 36px; font-size: 16px; }
+  .pd-qty-display { width: 45px; font-size: 13px; }
+
+  .pd-tabs-header { gap: 20px; }
+  .pd-tab-btn { font-size: 11px; padding: 16px 0; }
+
+  .pd-details > .pd-detail-pics-gallery,
+  .pd-main > .pd-detail-pics-gallery,
+  .pd-detail-pics-gallery {
+    margin-top: 30px;
+    padding: 40px 15px 0;
+  }
+
+  .pd-detail-pics-header { margin-bottom: 40px; }
+  .pd-detail-pics-header h2 { font-size: 20px; }
+  .pd-detail-pics-grid { grid-template-columns: repeat(2, 1fr); gap: 15px; margin-bottom: 60px; }
+  .pd-detail-pic-info h3 { font-size: 11px; }
+  .pd-detail-pic-price { font-size: 11px; }
+}
+
+@media (max-width: 480px) {
+  .pd-container { padding: 0 12px; }
+  .pd-main { padding: 20px 0; }
+
+  .pd-title { font-size: 18px; }
+  .pd-price { font-size: 14px; }
+
+  .pd-info-grid { gap: 12px 15px; padding: 15px 0; }
+  .pd-info-label { font-size: 9px; }
+  .pd-info-value { font-size: 11px; }
+
+  .pd-size-buttons { gap: 4px; }
+  .pd-size-btn { min-width: 40px; padding: 6px 0; font-size: 9px; }
+
+  .pd-qty-btn { width: 32px; height: 32px; font-size: 14px; }
+  .pd-qty-display { width: 40px; font-size: 12px; }
+
+  .pd-add-to-cart-btn,
+  .pd-try-it-on-btn { padding: 14px; font-size: 11px; }
+
+  .pd-tabs-header { gap: 12px; overflow-x: auto; padding-bottom: 0; }
+  .pd-tab-btn { font-size: 10px; padding: 12px 0; white-space: nowrap; }
+
+  .pd-tab-panel h3 { font-size: 12px; margin-bottom: 12px; }
+  .pd-tab-panel p { font-size: 12px; }
+  .pd-features-list li,
+  .pd-care-list li { font-size: 12px; }
+
+  .pd-details > .pd-detail-pics-gallery,
+  .pd-main > .pd-detail-pics-gallery,
+  .pd-detail-pics-gallery {
+    margin-top: 20px;
+    padding: 30px 12px 0;
+  }
+
+  .pd-detail-pics-header { margin-bottom: 30px; }
+  .pd-detail-pics-header h2 { font-size: 18px; }
+  .pd-detail-pics-grid { grid-template-columns: 1fr; gap: 12px; margin-bottom: 40px; }
+  .pd-detail-pic-info h3 { font-size: 10px; }
+  .pd-detail-add-to-cart-btn { font-size: 10px; padding: 10px 0; }
+}

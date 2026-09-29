@@ -1,0 +1,150 @@
+
+/* =================================
+   EVERYTHING YOU NEED
+================================= */
+
+.everything-section {
+  width: 100%;
+  padding: 80px 50px;
+  background: #fff;
+  text-align: center;
+}
+
+/* ================= TITLE ================= */
+
+.everything-title {
+  margin: 0 0 45px;
+
+  font-size: 30px;
+  font-weight: 400;
+
+  letter-spacing: 2px;
+  text-transform: uppercase;
+
+  color: #111;
+}
+
+
+/* ================= LINKS ================= */
+
+.everything-links {
+  width: 100%;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+
+/* ================= LINK ================= */
+
+.everything-link {
+  position: relative;
+
+  padding: 0 35px;
+
+  color: #111;
+  text-decoration: none;
+
+  font-size: 13px;
+  font-weight: 400;
+
+  letter-spacing: 1.5px;
+
+  text-transform: uppercase;
+
+  transition: opacity 0.3s ease;
+}
+
+
+/* Vertical separator */
+
+.everything-link:not(:last-child)::after {
+  content: "";
+
+  position: absolute;
+
+  right: 0;
+  top: 50%;
+
+  width: 1px;
+  height: 18px;
+
+  background: #cfcfcf;
+
+  transform: translateY(-50%);
+}
+
+
+/* Hover */
+
+.everything-link:hover {
+  opacity: 0.5;
+}
+
+
+/* ================= TABLET ================= */
+
+@media (max-width: 900px) {
+
+  .everything-section {
+    padding: 65px 30px;
+  }
+
+  .everything-title {
+    font-size: 27px;
+    margin-bottom: 35px;
+  }
+
+  .everything-link {
+    padding: 0 20px;
+    font-size: 11px;
+  }
+
+}
+
+
+/* ================= MOBILE ================= */
+
+@media (max-width: 600px) {
+
+  .everything-section {
+    padding: 55px 20px;
+  }
+
+  .everything-title {
+    font-size: 23px;
+    letter-spacing: 1.5px;
+    margin-bottom: 30px;
+  }
+
+  .everything-links {
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .everything-link {
+    padding: 0;
+    font-size: 11px;
+  }
+
+  .everything-link:not(:last-child)::after {
+    display: none;
+  }
+
+}
+
+
+/* ================= SMALL MOBILE ================= */
+
+@media (max-width: 400px) {
+
+  .everything-section {
+    padding: 45px 15px;
+  }
+
+  .everything-title {
+    font-size: 21px;
+  }
+
+}

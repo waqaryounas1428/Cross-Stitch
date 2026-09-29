@@ -1,0 +1,133 @@
+/* ================= FRAGRANCES PAGE ================= */
+.fragrances-page {
+  min-height: 100vh;
+  background: #fff;
+  padding-top: 0;
+}
+
+/* Container */
+.container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* Breadcrumb Section */
+.breadcrumb-section {
+  padding: 12px 0;
+  /* background: #f9f9f9; */
+  /* border-bottom: 1px solid #eee; */
+}
+
+.breadcrumb {
+  font-size: 12px;
+  /* color: #888; */
+}
+
+.breadcrumb a {
+  color: #5a9fd4;
+  text-decoration: none;
+}
+
+.breadcrumb a:hover {
+  text-decoration: underline;
+}
+
+.breadcrumb-separator {
+  margin: 0 8px;
+  /* color: #ccc; */
+}
+
+/* Filter Section */
+.filter-section {
+  padding: 20px 0;
+  border-bottom: 1px solid #eee;
+}
+
+.filter-button-wrapper {
+  position: relative;
+  display: inline-block;
+}
+
+.filter-by-btn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: transparent;
+  border: 1px solid #ddd;
+  padding: 8px 16px;
+  font-size: 12px;
+  color: #666;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  font-weight: 500;
+}
+
+.filter-by-btn:hover {
+  border-color: #333;
+  color: #333;
+}
+
+.filter-icon {
+  width: 16px;
+  height: 16px;
+}
+
+/* ===== UNIFORM GRID FOR FRAGRANCES ===== */
+/* Uses .products-grid-uniform from NormalGrid.css (imported in FRAGRANCES.jsx) */
+
+
+
+/* No Products Message */
+.no-products {
+  text-align: center;
+  padding: 80px 20px;
+  color: #666;
+}
+
+.no-products p {
+  font-size: 16px;
+  margin: 0;
+}
+
+/* Responsive Design */
+@media (max-width: 968px) {
+  .fragrances-page {
+    padding-top: 70px;
+  }
+
+  .fragrances-title {
+    font-size: 36px;
+    padding-bottom: 20px;
+  }
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding: 0 15px;
+  }
+
+  .fragrances-header {
+    padding: 40px 0 30px 0;
+  }
+
+  .fragrances-title {
+    font-size: 28px;
+  }
+
+  .fragrances-subtitle {
+    font-size: 12px;
+  }
+
+  .filter-section {
+    padding: 15px 0;
+  }
+}
+
+@media (max-width: 480px) {
+  .fragrances-title {
+    font-size: 22px;
+  }
+}

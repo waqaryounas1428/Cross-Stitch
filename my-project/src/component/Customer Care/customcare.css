@@ -1,0 +1,273 @@
+/* ================= CUSTOMER CARE PAGE ================= */
+.customer-care-page {
+  min-height: 100vh;
+  background: #fff;
+  padding-top: 80px; /* Space for fixed navbar */
+}
+
+/* Header Section */
+.page-header {
+  background: #f8f8f8;
+  padding: 40px 0;
+  border-bottom: 1px solid #eee;
+}
+
+.page-header h1 {
+  font-size: 28px;
+  font-weight: 600;
+  color: #333;
+  margin: 0 0 8px 0;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.page-header p {
+  font-size: 14px;
+  color: #666;
+  margin: 0;
+}
+
+/* Container */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* Main Content Layout */
+.page-content {
+  padding: 0;
+}
+
+.content-wrapper {
+  display: grid;
+  grid-template-columns: 250px 1fr;
+  gap: 0;
+  min-height: 600px;
+}
+
+/* Sidebar */
+.sidebar {
+  background: #f8f8f8;
+  padding: 0;
+  border-right: 1px solid #eee;
+  display: flex;
+  flex-direction: column;
+}
+
+.sidebar a {
+  display: block;
+  padding: 15px 20px;
+  color: #666;
+  text-decoration: none;
+  font-size: 12px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  border-bottom: 1px solid #eee;
+  transition: all 0.3s ease;
+}
+
+.sidebar a:hover {
+  background: #f0f0f0;
+  color: #333;
+}
+
+.sidebar a.active {
+  background: #fff;
+  color: #e91e63;
+  font-weight: 600;
+  border-right: 3px solid #e91e63;
+}
+
+/* Main Content */
+.main-content {
+  padding: 40px;
+  background: #fff;
+}
+
+.main-content h2 {
+  font-size: 24px;
+  font-weight: 600;
+  color: #333;
+  margin: 0 0 30px 0;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+/* FAQ Container */
+.faq-container {
+  max-width: 800px;
+}
+
+.faq-item {
+  border-bottom: 1px solid #eee;
+  margin-bottom: 0;
+}
+
+.faq-question-btn {
+  width: 100%;
+  padding: 20px 0;
+  background: none;
+  border: none;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+  text-align: left;
+}
+
+.faq-question {
+  font-size: 13px;
+  font-weight: 500;
+  color: #333;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  line-height: 1.4;
+}
+
+.faq-icon {
+  font-size: 18px;
+  color: #666;
+  font-weight: 300;
+  min-width: 20px;
+  text-align: center;
+}
+
+.faq-item.expanded .faq-question {
+  color: #000;
+  font-weight: 600;
+}
+
+.faq-item.expanded .faq-icon {
+  color: #000;
+}
+
+.faq-answer {
+  padding: 0 0 25px 0;
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+.faq-answer p {
+  font-size: 14px;
+  line-height: 1.6;
+  color: #555;
+  margin: 0;
+  padding-right: 40px;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Hover Effects */
+.faq-question-btn:hover .faq-question {
+  color: #000;
+}
+
+.faq-question-btn:hover .faq-icon {
+  color: #e91e63;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .customer-care-page {
+    padding-top: 65px;
+  }
+
+  .content-wrapper {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+  
+  .sidebar {
+    order: 2;
+    background: #fff;
+    border-right: none;
+    border-top: 1px solid #eee;
+    display: none; /* Hide on mobile for cleaner look */
+  }
+  
+  .main-content {
+    order: 1;
+    padding: 20px;
+  }
+  
+  .page-header {
+    padding: 20px 0;
+  }
+  
+  .page-header h1 {
+    font-size: 22px;
+  }
+  
+  .main-content h2 {
+    font-size: 18px;
+    margin-bottom: 20px;
+  }
+  
+  .faq-question-btn {
+    padding: 15px 0;
+  }
+  
+  .faq-question {
+    font-size: 12px;
+    padding-right: 20px;
+  }
+  
+  .faq-answer p {
+    padding-right: 20px;
+    font-size: 13px;
+  }
+}
+
+@media (max-width: 480px) {
+  .main-content {
+    padding: 15px;
+  }
+  
+  .container {
+    padding: 0 15px;
+  }
+  
+  .faq-question {
+    font-size: 11px;
+  }
+  
+  .faq-answer p {
+    font-size: 12px;
+    padding-right: 15px;
+  }
+}
+
+/* Extra polish */
+.faq-item:last-child {
+  border-bottom: none;
+}
+
+.sidebar a:last-child {
+  border-bottom: none;
+}
+
+/* Loading animation for smooth transitions */
+.main-content {
+  animation: slideIn 0.4s ease-out;
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateX(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}

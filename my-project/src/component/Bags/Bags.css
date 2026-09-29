@@ -1,0 +1,483 @@
+/* ================= BAGS PAGE ================= */
+.bags-page {
+  min-height: 100vh;
+  background: #fff;
+  padding-top: 80px;
+}
+
+/* Page Header */
+.page-header {
+  /* background: linear-gradient(135deg, #f8f8f8 0%, #efefef 100%); */
+  padding: 50px 0;
+  /* text-align: center; */
+  /* border-bottom: 1px solid #eee; */
+}
+
+.page-header h1 {
+  font-size: 32px;
+  font-weight: 600;
+  color: #333;
+  margin: 0 0 10px 0;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+/* .page-header p {
+  font-size: 16px;
+  color: #666;
+  margin: 0 0 15px 0;
+}
+
+.breadcrumb {
+  font-size: 14px;
+  color: #888;
+}
+
+.breadcrumb a {
+  color: #333;
+  text-decoration: none;
+}
+
+.breadcrumb a:hover {
+  color: #e91e63;
+} */
+
+/* Container */
+.container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* Main Content */
+.page-content {
+  padding: 60px 0;
+}
+
+/* Category Filter */
+.category-filter {
+  margin-bottom: 50px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+
+.category-filter h2 {
+  font-size: 24px;
+  font-weight: 600;
+  color: #333;
+  margin: 0 0 30px 0;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.filter-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  flex-wrap: wrap;
+}
+
+.filter-btn {
+  padding: 12px 25px;
+  background: #f8f9fa;
+  border: 2px solid #eee;
+  border-radius: 25px;
+  font-size: 14px;
+  font-weight: 500;
+  color: #666;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+/* .filter-btn:hover,
+.filter-btn.active {
+  background: #e91e63;
+  color: white;
+  border-color: #e91e63;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(233, 30, 99, 0.3);
+}
+
+.filter-trigger-btn {
+  padding: 12px 30px;
+  background: #333;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.filter-trigger-btn:hover {
+  background: #e91e63;
+  transform: translateY(-2px);
+} */
+
+/* ============ Bags Grid — plain, borderless, Shopify-style ============ */
+.bags-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2px;
+  margin-bottom: 60px;
+}
+
+@media (min-width: 969px) {
+  .bags-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.bag-card {
+  background: transparent;
+  border-radius: 0;
+  overflow: visible;
+  box-shadow: none;
+  transition: opacity 0.2s ease;
+  cursor: pointer;
+}
+
+.bag-card:hover {
+  transform: none;
+  box-shadow: none;
+  opacity: 0.85;
+}
+
+.bag-image {
+  position: relative;
+  aspect-ratio: 1 / 1;
+  overflow: hidden;
+  background: #f5f5f5;
+}
+
+.bag-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: none;
+}
+
+.bag-card:hover .bag-image img {
+  transform: none;
+}
+
+/* No hover overlay / "view details" button in this style — keep the
+   markup but hide it so nothing needs to be removed from the JSX */
+.bag-overlay {
+  display: none;
+}
+
+.view-details {
+  display: none;
+}
+
+.bag-info {
+  padding: 14px 4px 30px;
+  text-align: left;
+}
+
+.bag-info h3 {
+  font-size: 14px;
+  font-weight: 600;
+  color: #222;
+  margin: 0 0 6px 0;
+  line-height: 1.3;
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+}
+
+.bag-category {
+  display: none;
+}
+
+.bag-price {
+  font-size: 14px;
+  font-weight: 400;
+  color: #333;
+  margin: 0;
+}
+
+/* Modal */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  padding: 20px;
+}
+
+.modal-content {
+  background: white;
+  border-radius: 12px;
+  max-width: 900px;
+  width: 100%;
+  max-height: 90vh;
+  overflow-y: auto;
+  position: relative;
+  animation: modalSlideIn 0.3s ease;
+}
+
+@keyframes modalSlideIn {
+  from {
+    opacity: 0;
+    transform: scale(0.9) translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+.close-btn {
+  position: absolute;
+  top: 20px;
+  right: 25px;
+  background: rgba(0,0,0,0.8);
+  color: white;
+  border: none;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  font-size: 24px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+  transition: background 0.3s ease;
+}
+
+.close-btn:hover {
+  background: #e91e63;
+}
+
+.modal-body {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0;
+}
+
+.modal-image {
+  aspect-ratio: 1;
+}
+
+.modal-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 12px 0 0 12px;
+}
+
+.modal-info {
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.modal-info h2 {
+  font-size: 28px;
+  font-weight: 700;
+  color: #333;
+  margin: 0 0 15px 0;
+  line-height: 1.3;
+}
+
+.modal-category {
+  font-size: 14px;
+  color: #666;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin: 0 0 20px 0;
+  font-weight: 500;
+}
+
+.modal-price {
+  font-size: 32px;
+  font-weight: 700;
+  color: #e91e63;
+  margin: 0 0 40px 0;
+}
+
+.modal-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.btn-primary,
+.btn-secondary {
+  padding: 15px 30px;
+  border: 2px solid #e91e63;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.btn-primary {
+  background: #e91e63;
+  color: white;
+}
+
+.btn-primary:hover {
+  background: #d81b60;
+  border-color: #d81b60;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(233, 30, 99, 0.4);
+}
+
+.btn-secondary {
+  background: white;
+  color: #e91e63;
+}
+
+.btn-secondary:hover {
+  background: #e91e63;
+  color: white;
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+  .bags-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2px;
+  }
+}
+
+@media (max-width: 968px) {
+  .bags-page {
+    padding-top: 70px;
+  }
+
+  .bags-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2px;
+  }
+
+  .modal-body {
+    grid-template-columns: 1fr;
+  }
+
+  .modal-image img {
+    border-radius: 12px 12px 0 0;
+  }
+
+  .modal-info {
+    padding: 30px;
+  }
+
+  .page-header {
+    padding: 40px 20px;
+  }
+
+  .page-header h1 {
+    font-size: 28px;
+  }
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding: 0 15px;
+  }
+
+  .bags-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2px;
+  }
+
+  .filter-buttons {
+    justify-content: flex-start;
+    overflow-x: auto;
+    padding-bottom: 10px;
+  }
+
+  .filter-btn {
+    flex-shrink: 0;
+    padding: 10px 20px;
+    font-size: 12px;
+  }
+
+  .bag-info {
+    padding: 10px 2px 24px;
+  }
+
+  .modal-info {
+    padding: 25px;
+  }
+
+  .modal-info h2 {
+    font-size: 24px;
+  }
+
+  .modal-price {
+    font-size: 28px;
+    margin-bottom: 30px;
+  }
+
+  .modal-actions {
+    gap: 12px;
+  }
+
+  .btn-primary,
+  .btn-secondary {
+    padding: 12px 25px;
+  }
+}
+
+@media (max-width: 480px) {
+  .page-content {
+    padding: 40px 0;
+  }
+
+  .category-filter {
+    margin-bottom: 40px;
+  }
+
+  .bags-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2px;
+  }
+
+  .bag-card {
+    border-radius: 0;
+  }
+
+  .bag-info {
+    padding: 10px 2px 20px;
+  }
+
+  .bag-info h3 {
+    font-size: 13px;
+  }
+
+  .bag-price {
+    font-size: 13px;
+  }
+
+  .modal-overlay {
+    padding: 10px;
+  }
+
+  .modal-content {
+    border-radius: 8px;
+  }
+
+  .modal-info {
+    padding: 20px;
+  }
+}

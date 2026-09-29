@@ -1,0 +1,103 @@
+/* ================= FOOTWEAR PAGE ================= */
+.footwear-page {
+  min-height: 100vh;
+  background: #fff;
+  padding-top: 0;
+}
+
+/* Container */
+.container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* Breadcrumb Section */
+.breadcrumb-section {
+  padding: 12px 0;
+}
+
+.breadcrumb {
+  font-size: 12px;
+}
+
+.breadcrumb a {
+  color: #5a9fd4;
+  text-decoration: none;
+}
+
+.breadcrumb a:hover {
+  text-decoration: underline;
+}
+
+.breadcrumb-separator {
+  margin: 0 8px;
+  color: #999;
+}
+
+/* Page Header */
+.footwear-header {
+  padding: 40px 0 30px 0;
+}
+
+.footwear-title {
+  font-size: 48px;
+  font-weight: 300;
+  color: #333;
+  margin: 0;
+  padding-bottom: 20px;
+  border-bottom: 1px solid #eee;
+}
+
+/* No Products Message */
+.no-products {
+  text-align: center;
+  padding: 80px 20px;
+  color: #666;
+}
+
+.no-products p {
+  font-size: 16px;
+  margin: 0;
+}
+
+/* Responsive Design */
+@media (max-width: 968px) {
+  .footwear-page {
+    padding-top: 70px;
+  }
+
+  .footwear-title {
+    font-size: 36px;
+    padding-bottom: 15px;
+  }
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding: 0 15px;
+  }
+
+  .footwear-header {
+    padding: 30px 0 20px 0;
+  }
+
+  .footwear-title {
+    font-size: 28px;
+  }
+
+  .breadcrumb-section {
+    padding: 10px 0;
+  }
+}
+
+@media (max-width: 480px) {
+  .footwear-title {
+    font-size: 22px;
+    padding-bottom: 12px;
+  }
+
+  .breadcrumb {
+    font-size: 11px;
+  }
+}

@@ -1,0 +1,340 @@
+/* ================= PATTERN GRID ================= */
+
+.products-grid-mixed {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  margin-bottom: 60px;
+  width: 100%;
+  padding: 0;
+  margin-left: 0;
+  margin-right: 0;
+}
+
+.grid-row {
+  display: flex;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+/* Single Card Row - full width, height 250vh, NO SIDE GAP */
+.grid-row.single-row {
+  height: auto;
+  gap: 0;
+  width: 100vw;
+  margin: 0;
+  padding: 0;
+  position: relative;
+  left: 50%;
+  right: 50%;
+  margin-left: -50vw;
+  margin-right: -50vw;
+}
+
+.grid-row.single-row .product-card {
+  width: 100%;
+  height: auto;
+  border: none;
+  box-shadow: none;
+  flex: 1;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Double Card Row - two cards side by side with 5px gap */
+.grid-row.double-row {
+  height: auto;
+  gap: 5px;
+  width: 100vw;
+  margin: 0;
+  padding: 0;
+  position: relative;
+  left: 50%;
+  right: 50%;
+  margin-left: -50vw;
+  margin-right: -50vw;
+}
+
+.grid-row.double-row .product-card {
+  flex: 1;
+  height: auto;
+  border: none;
+  box-shadow: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.product-card {
+  background: white;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  border: none;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+}
+
+.product-card:hover {
+  transform: none;
+  box-shadow: none;
+}
+
+.product-image {
+  position: relative;
+  flex: none;
+  overflow: hidden;
+  background: #f5f5f5;
+  display: block;
+  border: none;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: auto;
+}
+
+.product-image img {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+  transition: transform 0.3s ease;
+  border: none;
+  margin: 0;
+  padding: 0;
+  display: block;
+  filter: none;
+  opacity: 1;
+}
+
+.product-card:hover .product-image img {
+  transform: none;
+  filter: none;
+  opacity: 1;
+}
+
+/* Removed: the full-image dark overlay (.product-overlay used to cover the
+   whole image with rgba(0,0,0,0.3) on hover, which made it look dim/blurred).
+   Only the Add to Cart bar below should appear on hover now. */
+.product-overlay {
+  display: none;
+}
+
+/* Add to Cart Button - Hidden by default, visible on hover at BOTTOM of image */
+.add-to-cart-btn {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(0, 0, 0, 0.85);
+  color: #fff;
+  border: none;
+  padding: 14px 32px;
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  cursor: pointer;
+  transition: opacity 0.3s ease, background-color 0.3s ease;
+  border-radius: 0;
+  opacity: 0;
+  z-index: 10;
+  pointer-events: none;
+  white-space: nowrap;
+  width: 100%;
+  text-align: center;
+  box-sizing: border-box;
+}
+
+.product-image:hover .add-to-cart-btn {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.add-to-cart-btn:hover {
+  background: rgba(0, 0, 0, 1);
+}
+
+.product-info {
+  padding: 16px 20px;
+  background: white;
+  border: none;
+  flex-shrink: 0;
+  min-height: auto;
+}
+
+.product-info h3 {
+  font-size: 14px;
+  font-weight: 400;
+  color: #333;
+  margin: 0 0 8px 0;
+  line-height: 1.4;
+}
+
+.product-fabric {
+  font-size: 11px;
+  color: #888;
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+  margin: 0 0 10px 0;
+  font-weight: 400;
+}
+
+.product-price {
+  font-size: 14px;
+  font-weight: 400;
+  color: #333;
+  margin: 0;
+}
+
+/* Responsive Design */
+@media (max-width: 1200px) {
+  .grid-row.single-row {
+    height: auto;
+  }
+  
+  .grid-row.double-row {
+    height: auto;
+  }
+}
+
+@media (max-width: 968px) {
+  .subcategory-tabs {
+    overflow-x: auto;
+    padding-bottom: 5px;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+
+  .subcategory-tabs::-webkit-scrollbar {
+    display: none;
+  }
+
+  .subcategory-tab {
+    flex-shrink: 0;
+    white-space: nowrap;
+  }
+
+  .tab-separator {
+    margin: 0 10px;
+  }
+
+  .grid-row.single-row {
+    height: auto;
+  }
+  
+  .grid-row.double-row {
+    height: auto;
+  }
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding: 0 15px;
+  }
+
+  .subcategory-nav {
+    padding: 12px 0;
+  }
+
+  .subcategory-tab {
+    font-size: 11px;
+  }
+
+  .tab-separator {
+    margin: 0 8px;
+  }
+
+  .filter-section {
+    padding: 15px 0;
+  }
+
+  .grid-row.double-row {
+    flex-direction: column;
+    height: auto;
+  }
+
+  .grid-row.double-row .product-card {
+    width: 100%;
+    height: auto;
+  }
+
+  .grid-row.single-row {
+    height: auto;
+  }
+
+  .product-info {
+    padding: 20px;
+  }
+
+  .product-info h3 {
+    font-size: 16px;
+  }
+
+  .product-price {
+    font-size: 18px;
+  }
+  
+  .add-to-cart-btn {
+    padding: 10px 20px;
+    font-size: 11px;
+  }
+}
+
+@media (max-width: 480px) {
+  .subcategory-tab {
+    font-size: 10px;
+  }
+
+  .tab-separator {
+    margin: 0 6px;
+  }
+
+  .products-grid-mixed {
+    gap: 15px;
+  }
+
+  .page-content {
+    padding: 30px 0;
+  }
+  
+  .grid-row.single-row,
+  .grid-row.double-row .product-card {
+    height: auto;
+  }
+  
+  .product-info {
+    padding: 15px;
+  }
+  
+  .product-info h3 {
+    font-size: 14px;
+  }
+  
+  .product-price {
+    font-size: 16px;
+  }
+  
+  .add-to-cart-btn {
+    padding: 8px 16px;
+    font-size: 10px;
+  }
+}
+
+.no-products {
+  text-align: center;
+  padding: 80px 20px;
+  color: #666;
+}
+
+.no-products p {
+  font-size: 16px;
+  margin: 0;
+}

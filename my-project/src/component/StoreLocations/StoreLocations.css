@@ -1,0 +1,315 @@
+.store-locations-page {
+  font-family: Arial, Helvetica, sans-serif;
+  color: #222;
+}
+
+.container {
+  max-width: 1300px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+/* Header */
+.page-header {
+  background: #f7f7f7;
+  padding: 40px 0 30px;
+  text-align: center;
+  border-bottom: 1px solid #e5e5e5;
+}
+
+.page-header h1 {
+  margin: 0 0 8px;
+  font-size: 30px;
+  font-weight: 700;
+}
+
+.page-header p {
+  margin: 0 0 10px;
+  color: #666;
+}
+
+.breadcrumb {
+  font-size: 13px;
+  color: #888;
+}
+
+.breadcrumb a {
+  color: #888;
+  text-decoration: none;
+}
+
+/* Layout: sidebar list + map */
+.page-content {
+  padding: 30px 0 50px;
+}
+
+.store-locator {
+  display: flex;
+  max-width: 1300px;
+  margin: 0 auto;
+  height: 780px;
+  border: 1px solid #e0e0e0;
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+.locator-sidebar {
+  width: 340px;
+  flex-shrink: 0;
+  overflow-y: auto;
+  background: #fff;
+  border-right: 1px solid #e0e0e0;
+}
+
+.city-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 24px;
+  border-bottom: 1px solid #eee;
+  cursor: pointer;
+  transition: background 0.15s ease;
+}
+
+.city-row:hover {
+  background: #fafafa;
+}
+
+.city-row.active {
+  background: #f4f4f4;
+}
+
+.city-name {
+  font-size: 15px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  color: #1a1a1a;
+}
+
+.toggle-icon {
+  font-size: 18px;
+  font-weight: 700;
+  color: #666;
+  width: 22px;
+  height: 22px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #ccc;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.city-stores-panel {
+  background: #fafafa;
+  padding: 10px 20px 18px;
+  border-bottom: 1px solid #eee;
+}
+
+.store-card {
+  background: #fff;
+  border: 1px solid #eee;
+  border-radius: 6px;
+  padding: 14px 16px;
+  margin-top: 10px;
+}
+
+.store-card h4 {
+  margin: 0 0 8px;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.store-card p {
+  margin: 0 0 6px;
+  font-size: 13px;
+  color: #555;
+  display: flex;
+  align-items: flex-start;
+  gap: 6px;
+}
+
+.store-card .icon {
+  flex-shrink: 0;
+}
+
+.store-actions {
+  display: flex;
+  gap: 8px;
+  margin-top: 10px;
+}
+
+.action-btn {
+  flex: 1;
+  text-align: center;
+  padding: 8px 10px;
+  font-size: 12px;
+  font-weight: 700;
+  border-radius: 4px;
+  text-decoration: none;
+  cursor: pointer;
+  border: none;
+}
+
+.action-btn.primary {
+  background: #1a1a1a;
+  color: #fff;
+}
+
+.action-btn.secondary {
+  background: #fff;
+  color: #1a1a1a;
+  border: 1px solid #ccc;
+}
+
+/* Map */
+.locator-map {
+  flex: 1;
+}
+
+.locator-map iframe {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+/* Contact section */
+.contact-section {
+  background: #f7f7f7;
+  padding: 40px 0;
+  text-align: center;
+  border-top: 1px solid #e5e5e5;
+}
+
+.contact-info h3 {
+  margin: 0 0 16px;
+  font-size: 20px;
+}
+
+.contact-details {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  flex-wrap: wrap;
+  font-size: 14px;
+  color: #444;
+}
+
+@media (max-width: 900px) {
+  .store-locator {
+    flex-direction: column;
+    height: auto;
+  }
+
+  .locator-sidebar {
+    width: 100%;
+    max-height: 400px;
+  }
+
+  .locator-map {
+    height: 400px;
+  }
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding: 0 15px;
+  }
+
+  .page-header {
+    padding: 30px 0 20px;
+  }
+
+  .page-header h1 {
+    font-size: 24px;
+  }
+
+  .store-locator {
+    border-radius: 4px;
+  }
+
+  .locator-sidebar {
+    max-height: 350px;
+  }
+
+  .locator-map {
+    height: 350px;
+  }
+
+  .city-row {
+    padding: 16px 18px;
+  }
+
+  .store-card {
+    padding: 12px 14px;
+  }
+
+  .contact-details {
+    gap: 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .container {
+    padding: 0 12px;
+  }
+
+  .page-header {
+    padding: 20px 0 15px;
+  }
+
+  .page-header h1 {
+    font-size: 20px;
+  }
+
+  .page-content {
+    padding: 20px 0 30px;
+  }
+
+  .store-locator {
+    border-radius: 0;
+  }
+
+  .locator-sidebar {
+    max-height: 300px;
+  }
+
+  .locator-map {
+    height: 300px;
+  }
+
+  .city-row {
+    padding: 14px 12px;
+  }
+
+  .city-name {
+    font-size: 14px;
+  }
+
+  .store-card {
+    padding: 10px 12px;
+    margin-top: 8px;
+  }
+
+  .store-card h4 {
+    font-size: 13px;
+  }
+
+  .store-card p {
+    font-size: 12px;
+  }
+
+  .action-btn {
+    padding: 6px 8px;
+    font-size: 11px;
+  }
+
+  .contact-details {
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .breadcrumb {
+    font-size: 11px;
+  }
+}

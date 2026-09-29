@@ -1,0 +1,344 @@
+/* Main Container - Full Screen Parallax Effect */
+.unstitched-main-container {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+  background: #fff;
+  margin-bottom: 30px;
+}
+
+.card-display {
+  width: 100%;
+  height: 100vh;
+  position: relative;
+}
+
+/* Grid Layout - Exactly like your reference image */
+.unstitched-grid {
+  display: grid;
+  grid-template-columns: 60% 40%;
+  height: 100vh;
+  width: 100%;
+  transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.reverse-grid {
+  grid-template-columns: 40% 60%;
+}
+
+/* Image Card - Large image on left/right */
+.image-card {
+  position: relative;
+  overflow: hidden;
+  background: #f8f8f8;
+}
+
+.card-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  transition: transform 1.2s ease, opacity 0.8s ease;
+  transform: scale(1.05);
+  opacity: 0;
+  animation: imageSlideIn 1s ease-out forwards;
+}
+
+@keyframes imageSlideIn {
+  0% {
+    transform: scale(1.1) translateX(50px);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.image-card:hover .card-img {
+  transform: scale(1.02);
+}
+
+/* Category Card - Text section with categories */
+/* Equal padding on all 4 sides, content centered vertically & horizontally
+   within that padded box (not stretched to the full card height) */
+.category-card {
+  background: #fff;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 80px;
+  position: relative;
+  height: 100%;
+  box-sizing: border-box;
+}
+
+.reverse-grid .category-card {
+  padding: 80px;
+}
+
+/* Category Title - Large heading like "UNSTITCHED" */
+.category-title {
+  font-size: 52px;
+  font-weight: 300;
+  letter-spacing: 12px;
+  color: #2c2c2c;
+  margin-bottom: 0;
+  line-height: 1;
+  font-family: 'Arial', sans-serif;
+  text-transform: uppercase;
+  opacity: 0;
+  transform: translateY(30px);
+  animation: titleSlideIn 0.8s ease-out 0.2s forwards;
+}
+
+@keyframes titleSlideIn {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Category List - compact vertical list, centered with the title */
+.category-list {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  gap: 14px;
+  width: 100%;
+  margin-top: 40px;
+}
+
+/* Category Buttons - Individual category items */
+.category-btn {
+  background: none;
+  border: none;
+  color: #888;
+  font-size: 15px;
+  font-weight: 400;
+  letter-spacing: 3px;
+  padding: 0;
+  cursor: pointer;
+  transition: all 0.4s ease;
+  text-align: left;
+  text-transform: uppercase;
+  position: relative;
+  opacity: 0;
+  transform: translateY(20px);
+  font-family: 'Arial', sans-serif;
+}
+
+/* Staggered animation for category buttons */
+.category-btn {
+  animation: categorySlideIn 0.6s ease-out forwards;
+}
+
+.category-btn:nth-child(1) { animation-delay: 0.4s; }
+.category-btn:nth-child(2) { animation-delay: 0.5s; }
+.category-btn:nth-child(3) { animation-delay: 0.6s; }
+.category-btn:nth-child(4) { animation-delay: 0.7s; }
+.category-btn:nth-child(5) { animation-delay: 0.8s; }
+.category-btn:nth-child(6) { animation-delay: 0.9s; }
+.category-btn:nth-child(7) { animation-delay: 1.0s; }
+
+@keyframes categorySlideIn {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.category-btn:hover {
+  color: #2c2c2c;
+  transform: translateX(15px);
+  letter-spacing: 4px;
+}
+
+/* Vertical line separator exactly like in your image */
+.category-card::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 1px;
+  height: 200px;
+  background: #ddd;
+  opacity: 0;
+  animation: lineSlideIn 0.8s ease-out 0.3s forwards;
+}
+
+.reverse-grid .category-card::before {
+  left: auto;
+  right: 0;
+}
+
+@keyframes lineSlideIn {
+  to {
+    opacity: 1;
+  }
+}
+
+/* Progress Indicator - Only inside hero1 component, not floating over entire website */
+.progress-indicator {
+  position: absolute;
+  bottom: 40px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 16px;
+  z-index: 100;
+  opacity: 1;
+  transition: opacity 0.3s ease;
+  pointer-events: auto;
+}
+
+.progress-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.2);
+  transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  cursor: pointer;
+  position: relative;
+}
+
+.progress-dot::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 0;
+  height: 0;
+  background: #2c2c2c;
+  border-radius: 50%;
+  transition: all 0.4s ease;
+}
+
+.progress-dot.active::after {
+  width: 8px;
+  height: 8px;
+}
+
+.progress-dot:hover {
+  background: rgba(0, 0, 0, 0.4);
+  transform: scale(1.2);
+}
+
+/* Animation Reset for category buttons when card changes */
+.category-btn.animate-in {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: categorySlideIn 0.6s ease-out forwards;
+}
+
+/* Responsive Design */
+@media (max-width: 1200px) {
+  .category-card {
+    padding: 80px 60px 80px 40px;
+  }
+  
+  .reverse-grid .category-card {
+    padding: 80px 40px 80px 60px;
+  }
+  
+  .category-title {
+    font-size: 42px;
+    letter-spacing: 8px;
+  }
+}
+
+@media (max-width: 768px) {
+  .unstitched-grid {
+    grid-template-columns: 1fr;
+    grid-template-rows: 55% 45%;
+  }
+  
+  .reverse-grid {
+    grid-template-columns: 1fr;
+    grid-template-rows: 45% 55%;
+  }
+  
+  .reverse-grid .category-card {
+    order: 1;
+  }
+  
+  .reverse-grid .image-card {
+    order: 2;
+  }
+  
+  .category-card {
+    padding: 30px 40px;
+    justify-content: center;
+  }
+
+  .category-list {
+    flex: none;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 30px;
+  }
+  
+  .category-card::before {
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100px;
+    height: 1px;
+  }
+  
+  .reverse-grid .category-card::before {
+    bottom: 0;
+    top: auto;
+    right: auto;
+    left: 50%;
+  }
+  
+  .category-title {
+    font-size: 36px;
+    letter-spacing: 6px;
+    margin-bottom: 0;
+    text-align: center;
+  }
+  
+  .category-list {
+    align-items: center;
+    text-align: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .category-card {
+    padding: 20px 18px;
+  }
+  
+  .category-title {
+    font-size: 24px;
+    letter-spacing: 3px;
+    margin-bottom: 0;
+  }
+  
+  .category-btn {
+    font-size: 12px;
+    letter-spacing: 1.5px;
+    padding: 8px 12px;
+  }
+  
+  .category-list {
+    gap: 15px;
+    flex-wrap: wrap;
+  }
+  
+  .progress-indicator {
+    bottom: 15px;
+  }
+  
+  .progress-dot {
+    width: 8px;
+    height: 8px;
+  }
+}
